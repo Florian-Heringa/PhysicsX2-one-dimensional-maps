@@ -10,6 +10,9 @@ class liapunov():
     def __init__(self, map):
         self.map = map
 
+    def __repr__(self):
+        return "Liapunov object with %s" % repr(self.map)
+
     def calc_liapunov_exponent(self, n, r, x0):
         """
         Liaponov exponent, n, r, x0

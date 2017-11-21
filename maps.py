@@ -12,10 +12,13 @@ class map():
         self.name = name
         self.rmin = rmin
         self.rmax = rmax
-        self.dr = (rmax-rmin)/100.
+        self.dr = (rmax-rmin)/1000.
 
     def __str__(self):
         return self.name
+
+    def __repr__(self):
+        return "%s: {rmin: %.2f, rmax: %.2f, dr: %.3f}" % (self.name, self.rmin, self.rmax, self.dr)
 
 ###########--Maps--#######################
 

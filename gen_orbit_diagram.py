@@ -11,6 +11,9 @@ class orbit_diagram():
         self.map = map
         self.set_points(300, 100)
 
+    def __repr__(self):
+        return "Orbit diagram object with %s. Points {cutoff: %d, used %d}" % (repr(self.map), self.cutoff, self.points_used)
+
     # Set amount of points to use before starting the plot (to let initial transients die out)
     # And set amount of points to plot per value of r
     def set_points(self, cutoff, points_used):
