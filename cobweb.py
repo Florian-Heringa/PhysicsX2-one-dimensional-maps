@@ -12,7 +12,7 @@ class cobweb():
     def draw_cobweb(self, n, r, x0):
 
         f, ax = plt.subplots()
-        ax.set_title("Cobweb for %s with n = %d" % (self.map, n))
+        ax.set_title("Cobweb for %s with n = %d, r = %.3f, x0 = %.3f" % (self.map, n, r, x0))
         ax.set_xlabel("$x_n$")
         ax.set_ylabel("$x_{n+1}$")
         ## Plot the function

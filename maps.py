@@ -22,6 +22,8 @@ class map():
 
 ###########--Maps--#######################
 
+
+################ Tent map
 def tent_map(x, r):
 
     if 0 <= x and x <= 0.5:
@@ -40,14 +42,28 @@ def tent_map_deriv(x, r):
     else:
         return 0
 
+################# Population map
+
 def population_map(xn, r):
     return r * xn * (1 - xn)
 
 def population_map_deriv(xn, r):
     return r - 2 * r * xn
 
+################ Sine map
+
 def sin_map(xn, r):
     return r * math.sin(math.pi * xn)
 
 def sin_map_deriv(xn, r):
-    return r * math.cos(math.pi * xn)
+    return r * math.pi * math.cos(math.pi * xn)
+
+################ Cosine map
+## Defined such that the entire function falls within the unit square
+## [0, 1] x [0, 1]
+
+def cos_map(xn, r):
+    return (r * math.cos(math.pi * xn) + 1) / 2
+
+def cos_map_deriv(xn, r):
+    return (-r * math.pi * math.sin(math.pi * xn)) / 2
