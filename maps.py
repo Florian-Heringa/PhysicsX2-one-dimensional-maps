@@ -45,3 +45,9 @@ def population_map(xn, r):
 
 def population_map_deriv(xn, r):
     return r - 2 * r * xn
+
+def sin_map(xn, r):
+    return r * math.sin(math.pi * xn)
+
+def sin_map_deriv(xn, r):
+    return r * math.cos(math.pi * xn)
