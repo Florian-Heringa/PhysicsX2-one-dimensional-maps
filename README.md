@@ -24,4 +24,4 @@ speed up computation.
 ## find_stable
 
 Find the value of a stable point (if any), if no point is found within an appreciable amount of iterations
-the function returns \infty
+the function returns $\infty$
