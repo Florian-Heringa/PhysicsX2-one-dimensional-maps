@@ -20,7 +20,7 @@ orb_tent.orbit_diagram(0.5, dr=0.001)
 orb_pop = orbit_diagram(population)
 orb_pop.set_points(100, 200)
 print(orb_pop)
-orb_pop.orbit_diagram(0.5, rmin=3.4, rmax=3.9, dr=0.0005)
+orb_pop.orbit_diagram(0.5, rmin=0, rmax=3, dr=0.0005)
 
 ## Orbit diagram of sine map
 orb_sin = orbit_diagram(sin)

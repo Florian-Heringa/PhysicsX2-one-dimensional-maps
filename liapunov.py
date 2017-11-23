@@ -1,6 +1,7 @@
 import math
 import sys
 import numpy as np
+import random as rd
 import matplotlib.pyplot as plt
 
 ###########--Liapunov class--###################
@@ -31,6 +32,33 @@ class liapunov():
             x_i = self.map.f(x_i, r)
 
         return arg
+    
+    def gen_seperation_plot(self, N, r, dx):
+
+        f, ax = plt.subplots()
+        ax.set_title("Seperation plot for %s with r = %f" % (self.map, r))
+        ax.set_xlabel("Seperation")
+        ax.set_ylabel("Iterations")
+
+        x1 = rd.random()
+        x2 = x1 + dx
+
+        x1s = [x1]
+        x2s = [x2]
+        dxs = [dx]
+        ns = [0]
+
+        for n in range(1, N + 1):
+            ns.append(n)
+            x1s.append(self.map.f(x1s[-1], r))
+            x2s.append(self.map.f(x2s[-1], r))
+            dxs.append(x1s[-1] - x2s[-1])
+
+        ax.plot(ns, x1s, 'r-.', label="x1")
+        ax.plot(ns, x2s, 'b--', label="x2")
+        ax.plot(ns, dxs, 'k-', label="dx")
+        ax.legend()
+        plt.show()
 
     def gen_liapunov_plot(self, n, dr, x0):
         """
