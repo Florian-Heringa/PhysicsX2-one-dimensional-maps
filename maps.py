@@ -26,6 +26,8 @@ class map():
 ################ Tent map
 def tent_map(x, r):
 
+    x %= 1
+
     if 0 <= x and x <= 0.5:
         return r * x
     elif 0.5 <= x and x <= 1:
@@ -34,6 +36,8 @@ def tent_map(x, r):
         return 0
 
 def tent_map_deriv(x, r):
+
+    x %= 1
 
     if 0 <= x and x <= 0.5:
         return r

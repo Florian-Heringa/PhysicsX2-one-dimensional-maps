@@ -14,13 +14,13 @@ sin = map(sin_map, sin_map_deriv, "Sine map", 0, math.pi)
 orb_tent = orbit_diagram(tent)
 orb_tent.set_points(100, 100)
 print(orb_tent)
-orb_tent.orbit_diagram(0.5, dr=0.001)
+orb_tent.orbit_diagram(0.5, rmin = 2, rmax= 3, dr=0.001)
 
 ## Orbit diagram of the population map r * x * (1 - x)
 orb_pop = orbit_diagram(population)
 orb_pop.set_points(100, 200)
 print(orb_pop)
-orb_pop.orbit_diagram(0.5, rmin=0, rmax=3, dr=0.0005)
+orb_pop.orbit_diagram(0.5, rmin=3.4, rmax=3.9, dr=0.0005)
 
 ## Orbit diagram of sine map
 orb_sin = orbit_diagram(sin)

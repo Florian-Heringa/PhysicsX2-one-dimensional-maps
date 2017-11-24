@@ -37,8 +37,8 @@ class liapunov():
 
         f, ax = plt.subplots()
         ax.set_title("Seperation plot for %s with r = %f" % (self.map, r))
-        ax.set_xlabel("Seperation")
-        ax.set_ylabel("Iterations")
+        ax.set_xlabel("Iterations")
+        ax.set_ylabel("x/dx")
 
         x1 = rd.random()
         x2 = x1 + dx
