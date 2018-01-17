@@ -9,8 +9,14 @@ class Attractor3D():
         self.system = system
         self.params = (a, b, c)
         self.allowedaxes = ['X', 'Y', 'Z']
+        self.xs = []
+        self.ys = []
+        self.zs = []
 
     def set_param(self, i, val):
+        a = self.params[0]
+        b = self.params[1]
+        c = self.params[2]
         self.params = (val, b, c) if val == 0 else (a, val, c) if val == 1 else (a, b, val)
 
     def set_params(self, a, b, c):
@@ -36,7 +42,12 @@ class Attractor3D():
             ys.append(ys[-1] + (y_d * dt))
             zs.append(zs[-1] + (z_d * dt))
 
-        return xs, ys, zs
+        self.xs = xs
+        self.ys = ys
+        self.zs = zs
+        self.totalT = N * dt
+
+        return [xs, ys, zs]
 
     def select_axis(self, ax):
 

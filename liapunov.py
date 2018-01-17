@@ -68,15 +68,27 @@ class liapunov():
         r_l = []
         l_l = []
 
+        zeroes_l = []
+        zeroes_r = []
+
         for r in np.arange(self.map.rmin + dr, self.map.rmax, dr):
 
             l = self.calc_liapunov_exponent(n, r, x0)
 
+            if (abs(l) < 0.05):
+                zeroes_l.append(l)
+                zeroes_r.append(r)
+
             r_l.append(r)
             l_l.append(l)
 
+        print(zeroes_r)
+
         plt.plot(r_l, l_l)
+        plt.plot(zeroes_r, zeroes_l, "r.")
+        plt.plot([self.map.rmin, self.map.rmax], [0, 0], "k-")
         plt.xlabel("r")
         plt.ylabel("Liapunov exponent ($\lambda$)")
+        plt.xlim([self.map.rmin, self.map.rmax])
         plt.title("%s" % self.map)
         plt.show()

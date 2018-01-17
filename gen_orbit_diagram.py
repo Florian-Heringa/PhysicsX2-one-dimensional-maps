@@ -2,6 +2,7 @@ import math
 import matplotlib.pyplot as plt
 import numpy as np
 from maps import *
+import statistics
 
 class orbit_diagram():
 
@@ -36,6 +37,13 @@ class orbit_diagram():
         f, ax = plt.subplots()
         ax.set_title("Orbit diagram for %s" % self.map)
 
+        # parameters for finding n-cycles
+        reset = True
+        nprev = 0
+        rprev = rmin
+        cycles = []
+        ns = []
+
         for r in np.arange(rmin, rmax, dr):
 
             # Reset value of x and empty list
@@ -52,10 +60,56 @@ class orbit_diagram():
                     
                 # Calculate next value of x
                 xn = self.map.f(xn, r)
+            
+            # detect n-cycles up to 6
+            try:
+                hist = np.histogram(xns, bins = 100)
+                n = len(find_peaks(hist[0], 25, 0.8))
+                if n <= 6 and n > 0 and nprev != n and n > 1 and r - rprev > 0.1:
+                    print(r)
+                    ax.plot([r, r], [0, 1])
+                    cycles.append(n)
+                    rprev = r
+            except ValueError as e:
+                print(e)
+
+            nprev = n
+            ns.append(n/10.0)
 
             # Plot for curent value of r
             ax.plot(rs, xns, 'k,')
+        ax.plot([r for r in np.arange(rmin, rmax, dr)], ns)
+        print(cycles)
+        for i in range(len(cycles)-1):
+            try:
+                while cycles[i] == cycles[i+1]:
+                    del cycles[i+1]
+            except IndexError as e:
+                print(e)
+                break
+        print(cycles)
 
-        ax.set_xlabel("Parameter (r)")
-        ax.set_ylabel("Values of x")
+
+        ax.set_xlabel("Parameter; r")
+        ax.set_ylabel("Allowed values of x")
+        ax.set_xlim([rmin, rmax])
+        ax.set_ylim(0)
         plt.show()
+
+
+def find_peaks(a, d, s):
+  x = np.array(a)
+  max = np.max(x)
+  length = len(a)
+  ret = []
+  for i in range(length):
+      ispeak = True
+      if i-1 > 0:
+          ispeak &= (x[i] > d * x[i-1])
+      if i+1 < length:
+          ispeak &= (x[i] > d * x[i+1])
+
+      ispeak &= (x[i] > s * max)
+      if ispeak:
+          ret.append(i)
+  return ret

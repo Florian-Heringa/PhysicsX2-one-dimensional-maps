@@ -8,10 +8,10 @@ class Feigenbaum():
 
     def calculate(self):
 
-        
+
 
     def actual(self):
-
+        # http://code.activestate.com/recipes/577464-feigenbaum-constant-calculation/
         maxIt = 13
         maxItJ = 10
         a_1 = 1.0

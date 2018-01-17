@@ -5,7 +5,7 @@ from maps import *
 from liapunov import *
 
 ## Creation of maps
-population = map(population_map, population_map_deriv, "Population map", 0, 4)
+population = map(population_map, population_map_deriv, "Population map", 3.0, 4.0)
 tent = map(tent_map, tent_map_deriv, "Tent map", 0, 2)
 
 ## Tent map
